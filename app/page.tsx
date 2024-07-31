@@ -32,35 +32,35 @@ export default function Home() {
                 items: [{ price: 550}],
               },
               {
-                id: 1,
+                id: 2,
                 name: 'Маргаритта',
                 imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif',
                 print: 550,
                 items: [{ price: 550}],
               },
               {
-                id: 1,
+                id: 3,
                 name: 'Маргаритта',
                 imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif',
                 print: 550,
                 items: [{ price: 550}],
               },
               {
-                id: 1,
+                id: 4,
                 name: 'Маргаритта',
                 imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif',
                 print: 550,
                 items: [{ price: 550}],
               },
               {
-                id: 1,
+                id: 5,
                 name: 'Маргаритта',
                 imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif',
                 print: 550,
                 items: [{ price: 550}],
               },
               {
-                id: 1,
+                id: 6,
                 name: 'Маргаритта',
                 imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif',
                 print: 550,
@@ -68,50 +68,50 @@ export default function Home() {
               },
             ]} categoryId={1} />
 
-<ProductGroupList title={"Завтрак"} items={[
+<ProductGroupList title={"Комбо"} items={[
               {
-                id: 1,
+                id: 7,
                 name: 'Маргаритта',
                 imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif',
                 print: 550,
                 items: [{ price: 550}],
               },
               {
-                id: 1,
+                id: 8,
                 name: 'Маргаритта',
                 imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif',
                 print: 550,
                 items: [{ price: 550}],
               },
               {
-                id: 1,
+                id: 9,
                 name: 'Маргаритта',
                 imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif',
                 print: 550,
                 items: [{ price: 550}],
               },
               {
-                id: 1,
+                id: 10,
                 name: 'Маргаритта',
                 imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif',
                 print: 550,
                 items: [{ price: 550}],
               },
               {
-                id: 1,
+                id: 11,
                 name: 'Маргаритта',
                 imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif',
                 print: 550,
                 items: [{ price: 550}],
               },
               {
-                id: 1,
+                id: 12,
                 name: 'Маргаритта',
                 imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif',
                 print: 550,
                 items: [{ price: 550}],
               },
-            ]} categoryId={1} />
+            ]} categoryId={2} />
           </div>
         </div>
       </div>
