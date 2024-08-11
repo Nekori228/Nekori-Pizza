@@ -1,6 +1,7 @@
 'use client';
 
 import { cn } from "@/lib/utils";
+import { Api } from "@/services/api-client";
 import { Search } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -11,12 +12,17 @@ interface Props {
 }
 
 export const SearchInput: React.FC<Props> = ({ className }) => {
+    const [searchQuery, setSearchQuery] = React.useState('');
     const [focused, setFocused] = React.useState(false);
     const ref = React.useRef(null);
 
     useClickAway(ref, () => {
         setFocused(false);
     });
+
+    React.useEffect(() => {
+        Api.products.search(searchQuery)
+    }, [searchQuery]);
 
     return (
         <>
@@ -29,6 +35,8 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
                     type="text"
                     placeholder="Найти пиццу..." 
                     onFocus={() => setFocused(true)}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     />
 
                     <div className={cn('absolute w-full bg-white rounded-xl py-2 top-14 shadow-md transition-all duration-200 invisible opacity-0 z-30', 
