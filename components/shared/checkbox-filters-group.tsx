@@ -9,13 +9,15 @@ import { Skeleton } from "../ui/skeleton";
  interface Props {
     title: string;
     items: Item[];
-    defaultItems: Item[];
-    limit: number;
+    defaultItems?: Item[];
+    limit?: number;
     loading?: boolean;
     searchInputPlaceholder?: string;
-    onChange?: (values: string[]) => void;
+    onClickChekbox?: (id: string) => void;
     defaultValue?: string[];
+    selected?: Set<string>;
     className?: string;
+    name?: string
  }
 
  export const CheckboxFiltersGroup: React.FC<Props> = (
@@ -27,8 +29,10 @@ import { Skeleton } from "../ui/skeleton";
         searchInputPlaceholder = 'Поиск...',
         className,
         loading,
-        onChange,
-        defaultValue
+        onClickChekbox,
+        selected,
+        defaultValue,
+        name,
     }) => {
     const [showAll, setShowAll] = React.useState(false);
     const [searchValue, setSearchValue] = React.useState('');
@@ -50,9 +54,9 @@ import { Skeleton } from "../ui/skeleton";
         </div>
     }
 
-    const list = showAll 
+    const list = showAll
         ? items.filter((item) => item.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))  
-        : defaultItems.slice(0, limit);
+        : (defaultItems || items).slice(0, limit);
 
     return (
         <div className={className}>
@@ -71,8 +75,9 @@ import { Skeleton } from "../ui/skeleton";
                         text={item.text}
                         value={item.value}
                         endAdornment={item.endAdornment}
-                        checked={false}
-                        onCheckedChange={(ids) => console.log(ids)}
+                        checked={selected?.has(item.value)}
+                        onCheckedChange={() => onClickChekbox?.(item.value)}
+                        name={name}
                     />
                 ))}
             </div>
