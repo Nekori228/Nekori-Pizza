@@ -2,6 +2,7 @@
 import React from "react";
 import { FilterChecboxProps, FilterCheckbox } from "./filter-checkboc";
 import { Input } from "../ui/input";
+import { Skeleton } from "../ui/skeleton";
 
  type Item = FilterChecboxProps
 
@@ -10,6 +11,7 @@ import { Input } from "../ui/input";
     items: Item[];
     defaultItems: Item[];
     limit: number;
+    loading?: boolean;
     searchInputPlaceholder?: string;
     onChange?: (values: string[]) => void;
     defaultValue?: string[];
@@ -24,6 +26,7 @@ import { Input } from "../ui/input";
         limit = 5,
         searchInputPlaceholder = 'Поиск...',
         className,
+        loading,
         onChange,
         defaultValue
     }) => {
@@ -32,6 +35,19 @@ import { Input } from "../ui/input";
 
     const onChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.target.value);
+    };
+
+    if (loading) {
+        return <div className={className}>
+            <p className="font-bold mb-3">{title}</p>
+
+            {
+                ...Array(limit).fill(0).map((_, index) => (
+                    <Skeleton className="h-6 mb-4 rounded-[8px]" />
+                ))}
+                
+                <Skeleton className="w-28 h-6 mb-4 rounded-[8px]" />
+        </div>
     }
 
     const list = showAll 
@@ -71,3 +87,5 @@ import { Input } from "../ui/input";
         </div>
     )
  }
+
+ // 6:12:00
