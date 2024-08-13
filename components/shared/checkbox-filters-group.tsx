@@ -13,7 +13,7 @@ import { Skeleton } from "../ui/skeleton";
     limit?: number;
     loading?: boolean;
     searchInputPlaceholder?: string;
-    onClickChekbox?: (id: string) => void;
+    onClickCheckbox?: (id: string) => void;
     defaultValue?: string[];
     selected?: Set<string>;
     className?: string;
@@ -29,7 +29,7 @@ import { Skeleton } from "../ui/skeleton";
         searchInputPlaceholder = 'Поиск...',
         className,
         loading,
-        onClickChekbox,
+        onClickCheckbox,
         selected,
         defaultValue,
         name,
@@ -76,7 +76,7 @@ import { Skeleton } from "../ui/skeleton";
                         value={item.value}
                         endAdornment={item.endAdornment}
                         checked={selected?.has(item.value)}
-                        onCheckedChange={() => onClickChekbox?.(item.value)}
+                        onCheckedChange={() => onClickCheckbox?.(item.value)}
                         name={name}
                     />
                 ))}
