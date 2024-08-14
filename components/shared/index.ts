@@ -7,4 +7,4 @@ import { SortPopup } from "./sort-popup";
 import { Filters } from "./filters";
 import { FilterCheckbox } from "./filter-checkboc";
 import { SearchInput } from "./search-input";
-
+import { ProductImage } from "./product-image";
