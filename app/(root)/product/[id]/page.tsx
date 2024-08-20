@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 export default async function ProductPage({ params: { id } }: { params: { id: string } }) {
     const product = await prisma.product.findUnique({where: { id: Number(id) }})
 
+    //14:37:00
     if (!product) {
         return notFound();
     }

@@ -1,6 +1,4 @@
 import { ChooseProductModal, Container, Title } from "@/shared/components/shared";
-import { GroupVariants } from "@/shared/components/shared/group-variants";
-import { ProductImage } from "@/shared/components/shared/pizza-image";
 import { prisma } from "@/prisma/prisma-client";
 import { notFound } from "next/navigation";
 

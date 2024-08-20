@@ -32,7 +32,7 @@ export const ProductCard: React.FC<Props> = ({
             <Title text={name} size="sm" className="mb-1 mt-3 font-bold" />
     
             <p className="text-sm text-gray-400">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet est amet consequatur. Earum quaerat a, enim vel reprehenderit iste fugiat! Rerum eum accusantium reiciendis quae reprehenderit natus quas delectus corporis.
+              {ingredients.map((ingredient) => ingredient.name).join(', ')}            
             </p>
     
             <div className="flex justify-between items-center mt-4">

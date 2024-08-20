@@ -54,7 +54,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children,
                 <div className="-mx-6 mt-5 overflow-auto flex-1">
                             {items.map((item) => (
                                 <div key={item.id} className="mb-2">
-                                <CartDrawerItem 
+                                <CartDrawerItem  
                                     id={item.id} 
                                     imageUrl={item.imageUrl} 
                                     details={item.pizzaSize && item.pizzaType 
