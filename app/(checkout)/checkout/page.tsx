@@ -3,15 +3,16 @@
 import { FormProvider, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
-import { CheckoutSidebar, Container, Title } from "@/shared/components/shared";
 import { useCart } from "@/shared/hooks";
-import { CheckoutAddressForm, CheckoutCart, CheckoutPersonalForm } from "@/shared/components/shared/checkout";
-import { checkoutFormSchema, CheckoutFormValues } from "@/shared/components/shared/checkout/checkout-form-schema";
-
-
+import { CheckoutSidebar, Container, Title, CheckoutAddressForm, CheckoutCart, CheckoutPersonalForm } from "@/shared/components";
+import { checkoutFormSchema, CheckoutFormValues } from "@/shared/constants";
+import { createOrder } from "@/app/actions";
+import toast from "react-hot-toast";
+import React from "react";
 
 export default function CheckoutPage() {
-    const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
+    const [submitting, setSubmitting] = React.useState(false);
+    const { totalAmount, updateItemQuantity, items, removeCartItem, loading } = useCart();
 
     const form = useForm<CheckoutFormValues>({
         resolver: zodResolver(checkoutFormSchema),
@@ -25,9 +26,27 @@ export default function CheckoutPage() {
         }
     });
 
-    const onSubmit = (data: CheckoutFormValues) => {
-        console.log(data);
-    }
+    const onSubmit = async (data: CheckoutFormValues) => {
+        try {
+          setSubmitting(true);
+    
+          const url = await createOrder(data);
+    
+          toast.error('Заказ успешно оформлен! 📝 Переход на оплату... ', {
+            icon: '✅',
+          });
+    
+          if (url) {
+            location.href = url;
+          }
+        } catch (err) {
+          console.log(err);
+          setSubmitting(false);
+          toast.error('Не удалось создать заказ', {
+            icon: '❌',
+          });
+        }
+      };
 
     const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
         const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
@@ -45,17 +64,18 @@ export default function CheckoutPage() {
                         onClickCountButton={onClickCountButton} 
                         removeCartItem={removeCartItem} 
                         items={items}
+                        loading={loading}
                     />
                     
-                    <CheckoutPersonalForm />
+                    <CheckoutPersonalForm className={loading ? "opacity-40 pointer-events-none" : ''} />
 
-                    <CheckoutAddressForm />
+                    <CheckoutAddressForm className={loading ? "opacity-40 pointer-events-none" : ''} />
                 </div>
                 {/* Правая часть */}
                 <div className="w-[450px]">
-                    <CheckoutSidebar totalAmount={totalAmount}/>
+                    <CheckoutSidebar totalAmount={totalAmount} loading={loading || submitting} />
                 </div>
-        </div>
+            </div>
             </form>
         </FormProvider>
     </Container>
