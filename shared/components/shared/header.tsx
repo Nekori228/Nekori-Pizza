@@ -11,6 +11,9 @@ import { SearchInput } from "./search-input";
 import { CartButton } from "./cart-button";
 import { useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
+import { useSession, signIn } from "next-auth/react";
+import { callbackify } from "util";
+import { ProfileButton } from "./profile-button";
 
 interface Props {
     hasSearch?: boolean;
@@ -19,6 +22,7 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ hasSearch = true, hasCart = true, className }) => {
+    const { data: session } = useSession();
     const searchParams = useSearchParams();
 
     React.useEffect(() => {
@@ -53,10 +57,7 @@ export const Header: React.FC<Props> = ({ hasSearch = true, hasCart = true, clas
 
                     {/*Правая часть */}
                     <div className="flex items-center gap-3">
-                        <Button variant="outline" className="flex item-center gap-1">
-                            <User size={16}/>
-                            Войти
-                        </Button>
+                        <ProfileButton />
 
                         {hasCart && <CartButton />}
                     </div>
@@ -65,3 +66,5 @@ export const Header: React.FC<Props> = ({ hasSearch = true, hasCart = true, clas
         </header>
     );
 };
+
+//20:13:50
